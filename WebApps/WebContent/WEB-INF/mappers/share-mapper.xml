@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="share">
+	<insert id="createOne" parameterType="java.util.HashMap">
+		insert into sharing values(sharing_seq.nextval, #{title}, #{filename}, #{filesize}, #{fileaddress}, #{filelink}, 0)
+	</insert>
+	<select id="read" resultType="java.util.HashMap">
+		select * from sharing order by num desc
+	</select>
+	<select id="readOne" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+		select * from sharing where num=#{num }
+	</select>
+	<update id="increaseCount" parameterType="java.lang.Integer">
+		update sharing set count = count +1 where num=#{num }
+	</update>
+</mapper>

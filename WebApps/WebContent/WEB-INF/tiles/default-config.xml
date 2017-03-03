@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base" template="/views/template.jsp">
+		<put-attribute name="title" value="OUTSTADING" />
+		<put-attribute name="header" value="/views/header.jsp" />
+		<put-attribute name="nav" value="/views/nav.jsp" />
+		<put-attribute name="footer" value="/views/footer.jsp" />
+	</definition>
+	
+	<definition name="t_index" extends="base">
+		<put-attribute name="main" value="/views/main.jsp"/>
+	</definition>
+	
+	<definition name="t_join01" extends="base">
+		<put-attribute name="main" value="/views/join/step01.jsp"/>
+	</definition>
+	
+	<definition name="t_join02" extends="base">
+		<put-attribute name="main" value="/views/join/step02.jsp"/>
+	</definition>
+	
+	<definition name="t_login" extends="base">
+		<put-attribute name="main" value="/views/login/login.jsp"/>
+	</definition>
+	
+	<definition name="t_boardList" extends="base">
+		<put-attribute name="main" value="/views/board/list.jsp"/>
+	</definition>
+	
+	<definition name="t_write" extends="base">
+		<put-attribute name="main" value="/views/board/write.jsp"/>
+	</definition>
+
+	<definition name="t_selectList" extends="base">
+		<put-attribute name="main" value="/views/board/selectList.jsp"/>
+	</definition>
+	
+	<definition name="t_share" extends="base">
+		<put-attribute name="main" value="/views/share/form.jsp"/>
+	</definition>
+	
+	<definition name="t_shareList" extends="base">
+		<put-attribute name="main" value="/views/share/list.jsp"/>
+	</definition>
+	
+	<definition name="t_downView" extends="base">
+		<put-attribute name="main" value="/views/share/selectList.jsp"/>
+	</definition>
+	
+	<definition name="t_info" extends="base">
+		<put-attribute name="main" value="/views/info/info.jsp"/>
+	</definition>
+	
+	<definition name="t_memberInfo" extends="base">
+		<put-attribute name="main" value="/views/memberInfo/info.jsp"/>
+	</definition>
+</tiles-definitions>

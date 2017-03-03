@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="ageGroup" resultType="java.util.HashMap">
+		select floor(age/10)*10 as age_group, count(*) as count from member group by (floor(age/10)) order by age_group
+	</select>
+	<select id="genderGroup" resultType="java.util.HashMap">
+		select gender, count(*) as count from member group by gender order by gender
+	</select>
+	<select id="checkCountOne" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from member where id=#{id}
+	</select>
+	<insert id="loginLog" parameterType="java.lang.String" >
+		insert into loginlog values(#{id}, sysdate)
+	</insert>
+	<select id="genderLogin" resultType="java.util.HashMap">
+		select m.gender as gender, count(l.ID) as count from member m, loginlog l where m.ID = l.ID group by m.gender order by gender
+	</select>
+	<select id="ageLogin" resultType="java.util.HashMap">
+		select floor(age/10)*10 as age, count(l.ID) as count from member m, loginlog l where m.ID = l.ID group by floor(age/10)*10 order by age
+	</select>
+</mapper>

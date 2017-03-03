@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="list">
+	<insert id="createOne" parameterType="java.util.HashMap">
+		insert into FREEBOARD values(freeboard_seq.nextval, #{writer}, #{category}, #{title}, #{content}, sysdate, 0, 0)
+	</insert>
+	<select id="readAll" resultType="java.util.HashMap">
+		select * from FREEBOARD order by num desc
+	</select>
+	<select id="cnt" resultType="java.lang.Integer">
+		select count(*) as cnt from freeboard
+	</select>
+	<select id="selectList" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+		select * from freeboard where num=#{num}
+	</select>
+	<update id="update" parameterType="java.util.HashMap">
+		update freeboard set writer=#{writer}, category=#{category}, title=#{title}, content=#{content} where num=#{num}
+	</update>
+	<select id="freeboardList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+         select step2.* from (select rownum as r, step1.* from (select * from FREEBOARD order by num desc) step1) step2 where <![CDATA[r>= #{start} and r <= #{end}]]>
+   </select>      
+</mapper>
